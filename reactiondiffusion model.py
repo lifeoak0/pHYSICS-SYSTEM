@@ -3,16 +3,14 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from scipy.ndimage import convolve, generate_binary_structure
 
-# Gray-Scott模型参数
+# Gray-Scott模型参数(参见理论引用：https://groups.csail.mit.edu/mac/projects/amorphous/GrayScott/)
 F = 0.04
 k = 0.06075
 Du, Dv = 0.16, 0.08
-
 # 设定网格大小
 size = 20
 U = np.ones((size, size))
 V = np.zeros((size, size))
-
 # 初始条件：在中心放置一小块V
 mid = size // 2
 r = 2
@@ -51,8 +49,6 @@ def update(frame):
     # 创建一个新的体素图
     ax.voxels(V > 0.1, facecolors='blue', edgecolor='k', shade=False)
 
-# 创建动画
 anim = FuncAnimation(fig, update, frames=100, init_func=init, blit=False)
 
-# 显示动画
 plt.show()
