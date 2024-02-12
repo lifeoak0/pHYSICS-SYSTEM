@@ -40,7 +40,6 @@ def init():
     voxels = ax.voxels(cube, facecolors='blue', edgecolor='k', shade=False)
     return voxels,
 
-# 更新函数
 def update(frame):
     global U, V
     U, V = reaction_diffusion_step(U, V, Du, Dv, F, k, 1.0)
